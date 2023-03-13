@@ -1,7 +1,7 @@
 package com.p2ohbpzabokradno.ohbp.controller;
 
-import com.p2ohbpzabokradno.ohbp.model.Medique;
-import com.p2ohbpzabokradno.ohbp.repository.MediqueRepository;
+import com.p2ohbpzabokradno.ohbp.model.CaseOhbp;
+import com.p2ohbpzabokradno.ohbp.repository.CaseOhbpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,11 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class MediqueController {
+public class CaseOhbpController {
 
 
     @Autowired
-    private MediqueRepository mediqueRepository;
+    private CaseOhbpRepository caseOhbpRepository;
 
 
     @GetMapping("/administrator_page")
@@ -31,7 +31,7 @@ public class MediqueController {
                          @RequestParam(defaultValue = "8") int size,
                          @RequestParam(defaultValue = "id,asc") String[] sort) {
         try {
-            List<Medique> casesMedique = new ArrayList<Medique>();
+            List<CaseOhbp> casesCaseOhbp = new ArrayList<CaseOhbp>();
 
             String sortField = sort[0];
             String sortDirection = sort[1];
@@ -41,17 +41,17 @@ public class MediqueController {
 
             Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
 
-            Page<Medique> mediquePage;
+            Page<CaseOhbp> mediquePage;
             if (keyword == null) {
-                mediquePage = mediqueRepository.findAll(pageable);
+                mediquePage = caseOhbpRepository.findAll(pageable);
             } else {
-                mediquePage = mediqueRepository.findByPatientLastNameContainsIgnoreCase(keyword, pageable);
+                mediquePage = caseOhbpRepository.findByPatientLastNameContainsIgnoreCase(keyword, pageable);
                 model.addAttribute("keyword", keyword);
             }
 
-            casesMedique = mediquePage.getContent();
+            casesCaseOhbp = mediquePage.getContent();
 
-            model.addAttribute("Slučaj broj", casesMedique);
+            model.addAttribute("Slučaj broj", casesCaseOhbp);
             model.addAttribute("Trenutna stranica", mediquePage.getNumber() + 1);
             model.addAttribute("Ukupno slučaja", mediquePage.getTotalElements());
             model.addAttribute("Ukupno stranica", mediquePage.getTotalPages());

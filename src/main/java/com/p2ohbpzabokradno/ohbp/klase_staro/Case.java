@@ -55,7 +55,7 @@ public class Case {
 
     @Override
     public String toString() {
-        return "Case{" +
+        return "CaseOhbp{" +
                 "id=" + id +
                 ", location='" + location + '\'' +
                 ", caseStatus='" + caseStatus + '\'' +

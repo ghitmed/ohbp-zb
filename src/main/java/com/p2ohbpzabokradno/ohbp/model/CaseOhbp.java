@@ -2,7 +2,6 @@ package com.p2ohbpzabokradno.ohbp.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,8 +13,8 @@ import java.util.Date;
 @ToString
 
 @Entity
-@Table(name = "Medique")
-public class Medique {
+@Table(name = "CaseOhbp")
+public class CaseOhbp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
