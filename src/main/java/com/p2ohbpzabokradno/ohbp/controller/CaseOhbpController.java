@@ -25,7 +25,7 @@ public class CaseOhbpController {
     private CaseOhbpRepository caseOhbpRepository;
 
 
-    @GetMapping("/administrator_page")
+    @GetMapping("/template/admnistrator_page")
     public String getAll(Model model, @RequestParam(required = false) String keyword,
                          @RequestParam(defaultValue = "1") int page,
                          @RequestParam(defaultValue = "8") int size,
