@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OhbpApplication {
+public class MediqueApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OhbpApplication.class, args);
+		SpringApplication.run(MediqueApplication.class, args);
 	}
-
 }
