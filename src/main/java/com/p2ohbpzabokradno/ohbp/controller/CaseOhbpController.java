@@ -25,6 +25,13 @@ public class CaseOhbpController {
     private CaseOhbpRepository caseOhbpRepository;
 
 
+    @GetMapping("/")
+    public String redirectToAdmin() {
+
+        return "redirect:/template/admnistrator_page";
+    }
+
+
     @GetMapping("/template/admnistrator_page")
     public String getAll(Model model, @RequestParam(required = false) String keyword,
                          @RequestParam(defaultValue = "1") int page,
