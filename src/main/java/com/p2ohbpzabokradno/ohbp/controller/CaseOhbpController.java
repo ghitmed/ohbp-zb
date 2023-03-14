@@ -31,6 +31,30 @@ public class CaseOhbpController {
         return "redirect:/template/admnistrator_page";
     }
 
+    @GetMapping("/redirectToDashboardOhbp")
+    public String redirectToDashboardOhbp() {
+
+        return "dashboard_ohbp.html";
+    }
+
+    @GetMapping("/redirectToObservationOhbp")
+    public String redirectToObservationOhbp() {
+
+        return "observation_ohbp.html";
+    }
+
+    @GetMapping("/redirectToPatients")
+    public String redirectToPatients() {
+
+        return "patients.html";
+    }
+
+    @GetMapping("/redirectToLegend")
+    public String redirectToLegend() {
+
+        return "legend.html";
+    }
+
 
     @GetMapping("/template/admnistrator_page")
     public String getAll(Model model, @RequestParam(required = false) String keyword,
@@ -72,4 +96,6 @@ public class CaseOhbpController {
 
         return "administrator_page";
     }
+
 }
+

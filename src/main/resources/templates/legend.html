@@ -19,19 +19,22 @@
   </style>
 </head>
 
-<body class="container-flex p-5">
+<body class="container-flex p-4">
 <nav class="navbar navbar-expand-md navbar" style="">
     <div class="container-flex">
         <div class="navbar-collapse text-center justify-content-between collapse show" id="navbar2SupportedContent" style="">
             <ul class="navbar-nav">
-                <li class="display-6 text-light">
-                    <a class="nav-link mx-2" href="#">Dashboard</a>
+                <li class="h3 text-light text-center d-flex flex-grow-1">
+                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToDashboardOhbp'">OHBP</a>
                 </li>
-                <li class="display-6 text-light">
-                    <a class="nav-link mx-2" href="#">Opservacija</a>
+                <li class="h3 text-light text-center d-flex flex-grow-1">
+                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToObservationOhbp'">Opservacija</a>
                 </li>
-                <li class="display-6 text-light">
-                    <a class="nav-link mx-2" href="#">Legenda</a>
+                <li class="h3 text-light text-left d-flex flex-grow-1">
+                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToPatients'">Pacijenti</a>
+                </li>
+                <li class="h3 text-light text-center d-flex flex-grow-1">
+                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToLegend'">Legenda</a>
                 </li>
             </ul>
         </div>
@@ -40,24 +43,20 @@
 <div class="h-20 container-flex">
     <div class="container-flex">
         <div id="md-8" style="" class="row">
-            <div class="col-md-2 text-left align-items-center d-flex" style="">
-                <h3 class="col-md-12 display-4 text-primary p-3 align-items-center"><b class="d-flex">
+            <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
+                <div class="display-4 p-3 d-flex justify-content-center align-items-center">
                     <a href="#" title="logo" style="text-align: center;">
-                        <img src="../templates/ikone/logo_mali.webp" class="img-responsive"></a></b></h3>
+                        <img src="../ikone/logo_mali.webp" class="img-responsive"></a>
+                </div>
             </div>
-            <div class="col-md-6 text-left">
-                <h3 class="col-md-12 display-4 text-primary text-left p-3">
-                    <b class="d-flex">Opća bolnica Zabok&nbsp;</b>
-                    <b class="d-flex">i bolnica hrvatskih veterana&nbsp;</b></h3>
+            <div class="text-left d-flex justify-content-center col-md-5 align-items-center" style="">
+                <h1 class="text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1" style="">
+                    <b class="d-flex">Opća bolnica Zabok i bolnica hrvatskih veterana</b></h1>
             </div>
-            <div class="col-md-2 d-flex align-items-center" style="text-align: center;">
-                <h2 class="col-md-12" style="text-align: center">
+            <div class="d-flex align-items-center justify-content-center col-md-2" style="text-align: center;">
+                <h2 class="flex-grow-1 text-primary" style="text-align: center" contenteditable="true">
                     <b>25.02.2023&nbsp; </b><b>18:20:35&nbsp;</b></h2>
-            </div>
-            <div>
 
-
-            </div>
         </div>
         <hr class="solid">
     </div>
