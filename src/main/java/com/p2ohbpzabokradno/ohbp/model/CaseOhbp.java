@@ -2,6 +2,7 @@ package com.p2ohbpzabokradno.ohbp.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -30,15 +31,16 @@ public class CaseOhbp {
     private String patientLastName;
 
     @Column(name = "vrijeme_dolaska_pacijenta")
+    @DateTimeFormat(pattern = "dd/mm/yyyy HH:mm:ss")
     private Date timeOfArrival;
 
-    @Column(name = "postupak_u_tijeku")
-    private int workInProgress;
+    @Column(name="trenutno radilište")
+    private int workInProcess;
 
-    @Column(name = "postupak_završen")
-    private int completedWork;
+   @Column(name="izdane interne uputnice")
+   private int completedWork;
 
-    @Column(name = "status_pacijenta_dijagnostika")
+    @Column(name = "dijagnostika_pacijenta")
     private String patientStatus;
 
     @Column(name = "lokacija_pacijenta")
