@@ -20,7 +20,6 @@ public class CaseOhbp {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer caseID;
 
-
     @Column(name = "trijazna_kategorija")
     private String triageCategory;
 
@@ -33,7 +32,13 @@ public class CaseOhbp {
     @Column(name = "vrijeme_dolaska_pacijenta")
     private Date timeOfArrival;
 
-    @Column(name = "status_pacijenta")
+    @Column(name = "postupak_u_tijeku")
+    private int workInProgress;
+
+    @Column(name = "postupak_završen")
+    private int completedWork;
+
+    @Column(name = "status_pacijenta_dijagnostika")
     private String patientStatus;
 
     @Column(name = "lokacija_pacijenta")
