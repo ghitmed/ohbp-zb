@@ -31,6 +31,7 @@ public class CaseOhbpController {
         return "redirect:/template/admnistrator_page";
     }
 
+
     @GetMapping("/redirectToDashboardOhbp")
     public String redirectToDashboardOhbp() {
 

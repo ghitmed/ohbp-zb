@@ -21,7 +21,7 @@ public class CaseOhbp {
     private Integer caseID;
 
     @Column(name = "trijazna_kategorija")
-    private String triageCategory;
+    private int triageCategory;
 
     @Column(name = "ime_pacijenta")
     private String patientFirstName;
@@ -30,7 +30,7 @@ public class CaseOhbp {
     private String patientLastName;
 
     @Column(name = "vrijeme_dolaska_pacijenta")
-    @DateTimeFormat(pattern = "dd/mm/yyyy HH:mm:ss")
+    //@DateTimeFormat(pattern = "dd/mm/yyyy HH:mm:ss")
     private Date timeOfArrival;
 
     @Column(name = "postupak_u_tijeku")
@@ -44,5 +44,8 @@ public class CaseOhbp {
 
     @Column(name = "lokacija_pacijenta")
     private String patientLocation;
+
+    @Column(name = "opservacija_pacijenta")
+    private int patientObservation;
 
 }
