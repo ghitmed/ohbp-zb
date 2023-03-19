@@ -38,17 +38,34 @@ public class CaseOhbpController {
         return "dashboard_ohbp.html";
     }
 
+
     @GetMapping("/redirectToObservationOhbp")
     public String redirectToObservationOhbp() {
 
         return "observation_ohbp.html";
     }
 
+
     @GetMapping("/redirectToPatients")
     public String redirectToPatients() {
 
         return "patients.html";
     }
+
+
+    @GetMapping("/redirectToObservationPatients")
+    public String redirectToObservationPatients() {
+
+        return "observation_patients.html";
+    }
+
+
+    @GetMapping("/redirectToTriageCategory")
+    public String redirectToTriageCategory() {
+
+        return "triage_category.html";
+    }
+
 
     @GetMapping("/redirectToLegend")
     public String redirectToLegend() {

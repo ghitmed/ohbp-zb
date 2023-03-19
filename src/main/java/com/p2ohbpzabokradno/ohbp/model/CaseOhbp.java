@@ -30,7 +30,7 @@ public class CaseOhbp {
     private String patientLastName;
 
     @Column(name = "vrijeme_dolaska_pacijenta")
-    //@DateTimeFormat(pattern = "dd/mm/yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "dd/mm/yyyy HH:mm:ss")
     private Date timeOfArrival;
 
     @Column(name = "postupak_u_tijeku")
