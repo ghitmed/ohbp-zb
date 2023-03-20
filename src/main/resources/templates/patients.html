@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Doctor // Dasboard</title>
+    <title> Administrator | OBZ </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -13,84 +13,84 @@
     <style>
     .table {
       border-collapse: separate;
-      border-spacing: 0 40px;
+      border-spacing: 0 30px;
+      text-justify: center;
       text-align: center;
     }
+
+    @keyframes blink {
+      0% {
+        background-color: transparent;
+      }
+
+      50% {
+        background-color: red;
+      }
+
+      100% {
+        background-color: transparent;
+      }
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
   </style>
+    <script>
+    setTimeout(function() {
+      window.location.href = "/redirectToTriageCategory";
+    }, 10000);
+  </script>
+    <script>
+    function blink() {
+      var elementToBlink = document.getElementById("element-to-blink");
+      elementToBlink.classList.toggle("blink");
+    }
+    var isBlinking = false;
+  </script>
 </head>
 
-<body class="container-flex p-4">
-<nav class="navbar navbar-expand-md navbar" style="">
-    <div class="container-flex">
-        <div class="navbar-collapse text-center justify-content-between collapse show" id="navbar2SupportedContent" style="">
-            <ul class="navbar-nav">
-                <li class="h3 text-light text-center d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToDashboardOhbp'">OHBP</a>
-                </li>
-                <li class="h3 text-light text-center d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToObservationOhbp'">Opservacija</a>
-                </li>
-                <li class="h3 text-light text-left d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToPatients'">Pacijenti</a>
-                </li>
-                <li class="h3 text-light text-center d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToLegend'">Legenda</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<body class="container-max-width p-3">
 <div class="h-20 container-flex">
     <div class="container-flex">
         <div id="md-8" style="" class="row">
             <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
                 <div class="display-4 p-3 d-flex justify-content-center align-items-center">
-                    <a href="#" title="logo" style="text-align: center;">
+                    <a href="#" title="logo" style="text-align: center;" onclick="window.location.href='/'">
                         <img src="../ikone/logo_mali.webp" class="img-responsive"></a>
                 </div>
             </div>
             <div class="text-left d-flex justify-content-center col-md-5 align-items-center" style="">
-                <h1 class="text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1" style="">
+                <h1 class="display-5 text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1" style="">
                     <b class="d-flex">Opća bolnica Zabok i bolnica hrvatskih veterana</b></h1>
             </div>
             <div class="d-flex align-items-center justify-content-center col-md-2" style="text-align: center;">
-                <h2 class="flex-grow-1 text-primary" style="text-align: center" contenteditable="true">
+                <h2 class="text-primary flex-grow-1" style="text-align: center" contenteditable="true">
                     <b>25.02.2023&nbsp; </b><b>18:20:35&nbsp;</b></h2>
             </div>
-            <div class="d-flex justify-content-center col-md-2">
-                <h3 class="display-4 p-3 d-flex align-items-center justify-content-center flex-grow-1" 			style="background-color:red">
-                    <b class="d-flex">
-                        <a href="#" title="hitna" style="text-align: center;">
-                            <img src="../ikone/hitna_d.webp" class="img-responsive"></a></b></h3>
+            <div class="col-md-2 d-flex align-items-center justify-content-end">
+                <button onclick="blink()">
+                    <a> <img src="../ikone/hslucaj.webp" class="img-responsive"></a></button>
             </div>
         </div>
         <hr class="solid">
     </div>
 </div>
-<div class="row">
+<div class="" style="">
     <div class="container-flex">
-        <div class="row">
-            <div class="col-lg-4 col-md-12 p-3">
-                <h4><b></b></h4>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="py-3" style="">
-    <div class="container-flex">
-        <div class="col">
-            <p class="display-3 text-light p-3 text-center shadow-lg align-items-center justify-content-center" style="background-color: red" text="center"> H </p>
+        <div id="element-to-blink" class="toggleBlink">
+            <h1 class="text-white p-3 d-flex justify-content-center flex-grow-1 align-items-center">ŽIVOTNO UGROŽENI PACIJENT</h1>
         </div>
     </div>
 </div>
 <div class="">
     <div class="container-flex">
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
+        <div class="table-responsive d-flex flex-grow-1" style="">
+            <table class="table table-striped">
                 <thead class="thead-dark">
                 <tr class="display: inline-block">
-                    <th class="font-weight-bold text-center d-flex align-items-center">
-                        <h3 class="text-left justify-content-center align-items-center d-flex">Trijažna kategorija</h3>
+                    <th class="font-weight-bold">
+                        <h3 class=".d-print-table-cell">Trijažna kategorija</h3>
                     </th>
                     <th class="font-weight-bold">
                         <h3 class=".d-print-table-cell">ID Pacijent</h3>
@@ -99,11 +99,15 @@
                         <h3>Vrijeme dolaska</h3>
                     </th>
                     <th class="font-weight-bold">
+                        <h3>Status</h3>
+                    </th>
+                    <th class="font-weight-bold">
                         <h3>Dijagnostika</h3>
                     </th>
                     <th class="font-weight-bold">
-                        <h3>Status</h3>
+                        <h3>Lokacija</h3>
                     </th>
+                    <th class="font-weight-bold"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -116,6 +120,11 @@
                     </td>
                     <td class="font-weight-bold">
                         <h3>25.02.2023 10:16</h3>
+                    </td>
+                    <td>
+                        <a href="#" title="status">
+                            <h3> 1/5 </h3>
+                        </a>
                     </td>
                     <td>
                         <a href="#" title="hitna"><img src="../ikone/hitna.webp"></a>
@@ -132,13 +141,18 @@
                         <h3>#435821</h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>25.02.2023 10:23</h3>
+                        <h3>25.02.2023 10:23 </h3>
+                    </td>
+                    <td>
+                        <a href="#" title="status">
+                            <h3> 2/4 </h3>
+                        </a>
                     </td>
                     <td>
                         <a href="#" title="hitna"><img src="../ikone/hitna.webp"></a>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Akutni dio</h3>
+                        <h3>Akutni dio </h3>
                     </td>
                 </tr>
                 <tr>
@@ -152,21 +166,9 @@
                         <h3>25.02.2023 11:13</h3>
                     </td>
                     <td>
-                        <a href="#" title="krevet"><img src="../ikone/krevet3.webp"></a>
-                    </td>
-                    <td class="font-weight-bold">
-                        <h3>Akutni dio</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold" style="background-color:yellow">
-                        <h3></h3>
-                    </td>
-                    <td class="font-weight-bold">
-                        <h3>#347853</h3>
-                    </td>
-                    <td class="font-weight-bold">
-                        <h3>25.02.2023 10:53</h3>
+                        <a href="#" title="status">
+                            <h3> 1/3 </h3>
+                        </a>
                     </td>
                     <td>
                         <a href="#" title="krevet"><img src="../ikone/krevet3.webp"></a>
@@ -180,10 +182,37 @@
                         <h3></h3>
                     </td>
                     <td class="font-weight-bold">
+                        <h3>#347853</h3>
+                    </td>
+                    <td class="font-weight-bold">
+                        <h3>25.02.2023 10:53</h3>
+                    </td>
+                    <td>
+                        <a href="#" title="status">
+                            <h3> 2/3 </h3>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" title="krevet"><img src="../ikone/krevet3.webp"></a>
+                    </td>
+                    <td class="font-weight-bold">
+                        <h3>Subakutni dio </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold" style="background-color:yellow">
+                        <h3></h3>
+                    </td>
+                    <td class="font-weight-bold">
                         <h3>#339821</h3>
                     </td>
                     <td class="font-weight-bold">
                         <h3>25.02.2023 11:40</h3>
+                    </td>
+                    <td>
+                        <a href="#" title="status">
+                            <h3> 1/3 </h3>
+                        </a>
                     </td>
                     <td>
                         <a href="#" title="hitna"><img src="../ikone/rtg.webp"></a>
@@ -202,11 +231,14 @@
                     <td class="font-weight-bold">
                         <h3>25.02.2023 10:20</h3>
                     </td>
+                    <td >
+                        <!-- <a href="#" title="hitna"><img src="../ikone/kat4.webp"></a>-->
+                    </td>
                     <td>
                         <a href="#" title="hitna"><img src="../ikone/kat4.webp"></a>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Subakutni dio</h3>
+                        <h3>Čekaonica</h3>
                     </td>
                 </tr>
                 <tr>
@@ -220,20 +252,17 @@
                         <h3>25.02.2023 09:30</h3>
                     </td>
                     <td>
+                        <!--<a href="#" title="hitna"><img src="../ikone/osoba.webp"></a>-->
+                    </td>
+                    <td>
                         <a href="#" title="hitna"><img src="../ikone/osoba.webp"></a>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Čekaona</h3>
+                        <h3>Čekaonica</h3>
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
-<div class="py-3">
-    <div class="container">
-        <div class="row">
         </div>
     </div>
 </div>
