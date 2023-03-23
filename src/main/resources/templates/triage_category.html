@@ -7,54 +7,51 @@
     <title> Administrator | OBZ </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded">
     <style>
-    .table {
-      border-collapse: separate;
-      border-spacing: 0 30px;
-      text-justify: center;
-      text-align: center;
-    }
+        .table {
+            border-collapse: separate;
+            border-spacing: 0 30px;
+            text-justify: center;
+            text-align: center;
+        }
 
-    @keyframes blink {
-      0% {
-        background-color: transparent;
-      }
+        @keyframes blink {
+            0% {
+                background-color: transparent;
+            }
 
-      50% {
-        background-color: red;
-      }
+            50% {
+                background-color: red;
+            }
 
-      100% {
-        background-color: transparent;
-      }
-    }
+            100% {
+                background-color: transparent;
+            }
+        }
 
-    .blink {
-      animation: blink 1s infinite;
-    }
-  </style>
+        .blink {
+            animation: blink 1s infinite;
+        }
+    </style>
     <script>
-    setTimeout(function() {
-      window.location.href = "/redirectToObservationPatients";
-    }, 10000);
-  </script>
+        setTimeout(function() {
+            window.location.href = "/redirectToObservationPatients";
+        }, 30000);
+    </script>
     <script>
-    function blink() {
-      var elementToBlink = document.getElementById("element-to-blink");
-      elementToBlink.classList.toggle("blink");
-    }
-    var isBlinking = false;
-  </script>
+        function blink() {
+            var elementToBlink = document.getElementById("element-to-blink");
+            elementToBlink.classList.toggle("blink");
+        }
+        var isBlinking = false;
+    </script>
 </head>
 
 <body class="container-max-width p-3">
-<div class="h-20 container-flex" >
+<div class="h-20 container-flex">
     <div class="container-flex">
         <div id="md-8" style="" class="row">
-            <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
+            <div class="col-md-3 d-flex align-items-center justify-content-center" style="" >
                 <div class="display-4 p-3 d-flex justify-content-center align-items-center">
                     <a href="#" title="logo" style="text-align: center;" onclick="window.location.href='/'">
                         <img src="../ikone/logo_mali.webp" class="img-responsive"></a>
@@ -68,9 +65,9 @@
                 <h2 class="text-primary flex-grow-1" style="text-align: center" contenteditable="true">
                     <b>25.02.2023&nbsp; </b><b>18:20:35&nbsp;</b></h2>
             </div>
-            <div class="col-md-2 d-flex align-items-center justify-content-end">
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
                 <button onclick="blink()">
-                    <a> <img src="../ikone/hslucaj.webp" class="img-responsive"></a></button>
+                    <a> <img src="../ikone/hslucaj.webp" class="img-responsive" style="	background-position: top left;	background-size: 100%;	background-repeat: repeat;"></a></button>
             </div>
         </div>
         <hr class="solid">
