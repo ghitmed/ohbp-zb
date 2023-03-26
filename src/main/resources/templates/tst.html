@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UNOS STANJA PACIJENTA</title>
+  <!-- CSS BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- OUR CSS ADD-on -->
+  <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}">
+</head>
+
+<body>
+<div class="col-12">
+  <div class="row max-h-120">
+    <div class="col-lg-3 col-5 d-flex justify-content-lg-end justify-content-center">
+      <img class="mt-4 d-none d-lg-inline-block" th:src="@{/img/welcome-small.jpg}" />
+      <div class="logout-wrapper d-block d-lg-none">
+        <form action="/patient/list">
+          <button type="submit" class="btn btn-danger mt-5 mt-lg-4 mb-5 mb-lg-0"><b>POVRATAK</b></button>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6 col-2">
+    </div>
+    <div class="col-lg-3 col-5 d-flex justify-content-lg-start justify-content-center">
+      <div class="logout-wrapper">
+        <form action="/logout">
+          <button type="submit" class="btn btn-danger mt-5 mt-lg-4 mb-5 mb-lg-0"><b>ODJAVA</b></button>
+        </form>
+        <div class="clear"></div>
+        <form action="/patient/list">
+          <button type="submit" class="btn btn-danger mt-5 mt-lg-4 mb-5 mb-lg-0 d-none d-lg-inline-block"><b>POVRATAK</b></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 d-sm-none d-md-none d-lg-block text-end"></div>
+    <div class="col-lg-6 col-12">
+      <div class="justify text-center">
+        <div class="row mb-5">
+          <div class="col-lg-4 col-5">
+            <h4>
+              <th th:text="${user.firstName}"></th>
+              <th th:text="${user.lastName}"></th>
+            </h4>
+          </div>
+          <div class="col-lg-4 col-2"></div>
+          <div class="col-lg-4 col-5">
+            <h4>PIN <th th:text="${user.pin}"></h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <form th:action="@{add}">
+            <label class="d-block mb-2">Sistolički tlak (veći broj):</label>
+            <input th:field="${record.systole}" class="col-xl-3 col-lg-4 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="sistoličkiTlak" datatype="number" min="40" pattern="[0-9]{2,}" required/>
+
+            <label class="d-block mb-2">Dijastolički tlak (manji broj):</label>
+            <input th:field="${record.diastole}" class="col-xl-3 col-lg-4 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="dijastoličkiTlak" datatype="number" min="20" pattern="[0-9]{2,}" required/>
+
+            <label class="d-block mb-2">Broj otkucaja srca:</label>
+            <input th:field="${record.heartBeat}" class="col-xl-3 col-lg-4 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="brojOtkucajaSrca" datatype="number" min="20" pattern="[0-9]{2,}" required/>
+
+            <label class="d-block mb-2" for="subject">Opis stanja:</label>
+            <textarea th:field="${record.comments}" class="col-xl-4 col-lg-5 col-md-6 col-sm-6 min-w-300 text-center mb-4" id="subject" name="subject" placeholder="Opišite kako se osjećate..." style="height:200px"></textarea>
+
+            <div class="clear"></div>
+
+            <button type="submit" class="btn mb-5 btn-danger"><b>SPREMI</b></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-sm-none d-md-none d-lg-block justify text-start"></div>
+  </div>
+</div>
+
+<!-- JAVASCRIPT BUNDLE WITH POPPER -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

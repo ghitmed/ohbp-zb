@@ -15,22 +15,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class CaseOhbpController {
 
-
     @Autowired
     private CaseOhbpRepository caseOhbpRepository;
-
 
     @GetMapping("/")
     public String redirectToAdmin() {
 
         return "redirect:/template/admnistrator_page";
     }
-
 
     @GetMapping("/redirectToDashboardOhbp")
     public String redirectToDashboardOhbp() {
@@ -73,6 +71,24 @@ public class CaseOhbpController {
         return "legend.html";
     }
 
+ ;
+
+    @GetMapping("/redirectToBis")
+    public String redirectToBis(){
+
+        return "BIS.html";
+    }
+
+    @GetMapping("/createNewCase")
+    public String createNewCase(Integer caseID, int triageCategory, String patientFirstName, String patientLastName, Date timeOfArrival, int workInProgress, int completedWork, String patientStatus, String patientLocation, int patientObservation) {
+        CaseOhbp caseOhbp = new CaseOhbp(caseID, triageCategory, patientFirstName, patientLastName, timeOfArrival, workInProgress, completedWork, patientStatus, patientLocation, patientObservation);
+        caseOhbpRepository.save (caseOhbp);
+
+        return "redirect: BIS.html";
+
+    }
+
+
 
     @GetMapping("/template/admnistrator_page")
     public String getAll(Model model, @RequestParam(required = false) String keyword,
@@ -114,6 +130,14 @@ public class CaseOhbpController {
 
         return "administrator_page";
     }
+
+
+
+
+
+
+
+
 
 }
 
