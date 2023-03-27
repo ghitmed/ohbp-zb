@@ -1,7 +1,9 @@
 package com.p2ohbpzabokradno.ohbp.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 
@@ -12,59 +14,77 @@ public class CaseOhbp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer caseID;
+    private int id;
 
-    @Column(name = "trijazna_kategorija")
+
+    @Column(name = "trijaza")
     private int triageCategory;
 
-    @Column(name = "ime_pacijenta")
+    @Column(name = "hslucaj")
+    private Integer caseID;
+
+    @Column(name = "ime")
     private String patientFirstName;
 
-    @Column(name = "prezime_pacijenta")
+    @Column(name = "prezime")
     private String patientLastName;
 
-    @Column(name = "vrijeme_dolaska_pacijenta")
+    @Column(name = "vr_dolaska")
     @DateTimeFormat(pattern = "dd/mm/yyyy HH:mm:ss")
     private Date timeOfArrival;
 
-    @Column(name = "postupak_u_tijeku")
-    private int workInProgress;
+    @Column(name = "p_retrijaza")
+    private  int patientReTriage;
 
-    @Column(name = "postupak_završen")
+
+    @Column(name = "po_zavrsen")
     private int completedWork;
 
-    @Column(name = "status_pacijenta_dijagnostika")
+
+    @Column(name = "po_traje")
+    private int workInProgress;
+
+
+    @Column(name = "p_dijagnostika")
     private String patientStatus;
 
-    @Column(name = "lokacija_pacijenta")
+    @Column(name = "p_lokacija")
     private String patientLocation;
 
-    @Column(name = "opservacija_pacijenta")
+    @Column(name = "p_opservacija")
     private int patientObservation;
 
+    @Column(name = "p_arhiva")
+    private  int patientArchive;
+
+    public CaseOhbp(Integer caseID, String triageCategory, String patientFirstName, String patientLastName, Date timeOfArrival, int workInProgress, int completedWork, String patientStatus, String patientLocation, int patientObservation) {
+    }
 
     public CaseOhbp() {
     }
 
-    public CaseOhbp(Integer caseID, int triageCategory, String patientFirstName, String patientLastName, Date timeOfArrival, int workInProgress, int completedWork, String patientStatus, String patientLocation, int patientObservation) {
-        this.caseID = caseID;
+    public CaseOhbp(int id, int triageCategory, Integer caseID, String patientFirstName, String patientLastName, Date timeOfArrival, int patientReTriage, int completedWork, int workInProgress, String patientStatus, String patientLocation, int patientObservation, int patientArchive) {
+        this.id = id;
         this.triageCategory = triageCategory;
+        this.caseID = caseID;
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
         this.timeOfArrival = timeOfArrival;
-        this.workInProgress = workInProgress;
+        this.patientReTriage = patientReTriage;
         this.completedWork = completedWork;
+        this.workInProgress = workInProgress;
         this.patientStatus = patientStatus;
         this.patientLocation = patientLocation;
         this.patientObservation = patientObservation;
+        this.patientArchive = patientArchive;
     }
 
-    public Integer getCaseID() {
-        return caseID;
+    public int getId() {
+        return id;
     }
 
-    public void setCaseID(Integer caseID) {
-        this.caseID = caseID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getTriageCategory() {
@@ -73,6 +93,14 @@ public class CaseOhbp {
 
     public void setTriageCategory(int triageCategory) {
         this.triageCategory = triageCategory;
+    }
+
+    public Integer getCaseID() {
+        return caseID;
+    }
+
+    public void setCaseID(Integer caseID) {
+        this.caseID = caseID;
     }
 
     public String getPatientFirstName() {
@@ -99,12 +127,12 @@ public class CaseOhbp {
         this.timeOfArrival = timeOfArrival;
     }
 
-    public int getWorkInProgress() {
-        return workInProgress;
+    public int getPatientReTriage() {
+        return patientReTriage;
     }
 
-    public void setWorkInProgress(int workInProgress) {
-        this.workInProgress = workInProgress;
+    public void setPatientReTriage(int patientReTriage) {
+        this.patientReTriage = patientReTriage;
     }
 
     public int getCompletedWork() {
@@ -113,6 +141,14 @@ public class CaseOhbp {
 
     public void setCompletedWork(int completedWork) {
         this.completedWork = completedWork;
+    }
+
+    public int getWorkInProgress() {
+        return workInProgress;
+    }
+
+    public void setWorkInProgress(int workInProgress) {
+        this.workInProgress = workInProgress;
     }
 
     public String getPatientStatus() {
@@ -139,19 +175,30 @@ public class CaseOhbp {
         this.patientObservation = patientObservation;
     }
 
+    public int getPatientArchive() {
+        return patientArchive;
+    }
+
+    public void setPatientArchive(int patientArchive) {
+        this.patientArchive = patientArchive;
+    }
+
     @Override
     public String toString() {
         return "CaseOhbp{" +
-                "caseID=" + caseID +
+                "id=" + id +
                 ", triageCategory=" + triageCategory +
+                ", caseID=" + caseID +
                 ", patientFirstName='" + patientFirstName + '\'' +
                 ", patientLastName='" + patientLastName + '\'' +
                 ", timeOfArrival=" + timeOfArrival +
-                ", workInProgress=" + workInProgress +
+                ", patientReTriage=" + patientReTriage +
                 ", completedWork=" + completedWork +
+                ", workInProgress=" + workInProgress +
                 ", patientStatus='" + patientStatus + '\'' +
                 ", patientLocation='" + patientLocation + '\'' +
                 ", patientObservation=" + patientObservation +
+                ", patientArchive=" + patientArchive +
                 '}';
     }
 }

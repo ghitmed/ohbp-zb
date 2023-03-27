@@ -13,16 +13,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Controller
 public class CaseOhbpController {
 
     @Autowired
     private CaseOhbpRepository caseOhbpRepository;
+    private Object CaseOhbp;
 
     @GetMapping("/")
     public String redirectToAdmin() {
@@ -71,16 +75,26 @@ public class CaseOhbpController {
         return "legend.html";
     }
 
- ;
+    ;
 
     @GetMapping("/redirectToBis")
-    public String redirectToBis(){
+    public String redirectToBis() {
 
         return "BIS.html";
+
     }
 
+
+    @GetMapping({"/administrator_page",})
+    public ModelAndView getAllCases() {
+        ModelAndView casesOhbp = new ModelAndView("ohbpAll");
+        casesOhbp.addObject("zbohbp", caseOhbpRepository.findAll());
+        return casesOhbp;
+    }
+
+
     @GetMapping("/createNewCase")
-    public String createNewCase(Integer caseID, int triageCategory, String patientFirstName, String patientLastName, Date timeOfArrival, int workInProgress, int completedWork, String patientStatus, String patientLocation, int patientObservation) {
+    public String createNewCase(Integer caseID, String triageCategory, String patientFirstName, String patientLastName, Date timeOfArrival, int workInProgress, int completedWork, String patientStatus, String patientLocation, int patientObservation) {
         CaseOhbp caseOhbp = new CaseOhbp(caseID, triageCategory, patientFirstName, patientLastName, timeOfArrival, workInProgress, completedWork, patientStatus, patientLocation, patientObservation);
         caseOhbpRepository.save (caseOhbp);
 
@@ -116,27 +130,20 @@ public class CaseOhbpController {
 
             casesCaseOhbp = mediquePage.getContent();
 
-            model.addAttribute("Slučaj broj", casesCaseOhbp);
-            model.addAttribute("Trenutna stranica", mediquePage.getNumber() + 1);
-            model.addAttribute("Ukupno slučaja", mediquePage.getTotalElements());
-            model.addAttribute("Ukupno stranica", mediquePage.getTotalPages());
-            model.addAttribute("Veličina stranice", size);
-            model.addAttribute("Sortiranje", sortField);
-            model.addAttribute("Smjer sortiranja", sortDirection);
-            model.addAttribute("Obrnuti smjer sortiranja ", sortDirection.equals("asc") ? "desc" : "asc");
+            model.addAttribute("tutorials", casesCaseOhbp);
+            model.addAttribute("currentPage", mediquePage.getNumber() + 1);
+            model.addAttribute("totalItems", mediquePage.getTotalElements());
+            model.addAttribute("totalPages", mediquePage.getTotalPages());
+            model.addAttribute("pageSize", size);
+            model.addAttribute("sortField", sortField);
+            model.addAttribute("sortDirection", sortDirection);
+            model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
         } catch (Exception e) {
             model.addAttribute("message", e.getMessage());
         }
 
         return "administrator_page";
     }
-
-
-
-
-
-
-
 
 
 }
