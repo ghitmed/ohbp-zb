@@ -159,40 +159,38 @@ window.onbeforeunload = function() {
     <div>
         <div class="container-flex">
 
-            <h3>Hitni slučajevi</h3>
-
-            <hr/>
-
-            <table class="table table-bordered table-striped">
+            <table class="table table-responsive table-striped">
 
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Trijažna kategorija</th>
-                    <th>Broj Slučaja</th>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Vrijeme dolaska</th>
-                    <th>Retrijaža</th>
-                    <th>Status</th>
-                    <th>Status</th>
-                    <th>Dijagnostika</th>
-                    <th>lokacija</th>
+                    <th class="h4" >ID</th>
+                    <th class="h4" >Trijažna kategorija</th>
+                    <th class="h4" >Broj Slučaja</th>
+                    <th class="h4" >Ime</th>
+                    <th class="h4" >Prezime</th>
+                    <th class="h4" >Vrijeme dolaska</th>
+                    <th class="h4" >Retrijaža</th>
+                    <th class="h4" >Status</th>
+                    <th class="h4" >Dijagnostika</th>
+                    <th class="h4" >lokacija</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="CaseOhbp: ${allCases}">
-                    <td th:text="${CaseOhbp.id}" />
-                    <td th:text="${CaseOhbp.triageCategory}" />
-                    <td th:text="${CaseOhbp.caseID}" />
-                    <td th:text="${CaseOhbp.patientFirstName}" />
-                    <td th:text="${CaseOhbp.patientLastName}" />
-                    <td th:text="${CaseOhbp.timeOfArrival}" />
-                    <td th:text="${CaseOhbp.patientReTriage}" />
-                    <td th:text="${CaseOhbp.completedWork}"/>
-                    <td th:text="${CaseOhbp.workInProgress}"/>
-                    <td th:text="${CaseOhbp.patientStatus}" />
-                    <td th:text="${CaseOhbp.patientLocation}" />
+                    <td class="h4" th:text="${CaseOhbp.id}" />
+                    <td class="h4" th:text="${CaseOhbp.triageCategory}" />
+                    <td class="h4" th:text="${CaseOhbp.caseID}" />
+                    <td class="h4" th:text="${CaseOhbp.patientFirstName}" />
+                    <td class="h4" th:text="${CaseOhbp.patientLastName}" />
+                    <td class="h4" th:text="${CaseOhbp.timeOfArrival}" />
+                    <td class="h4" th:text="${CaseOhbp.patientReTriage}" />
+                    <td class="h4">
+                        <span th:text="${CaseOhbp.completedWork}"></span>
+                        <span> / </span>
+                        <span th:text="${CaseOhbp.workInProgress}"></span>
+                    </td>
+                    <td class="h4" th:text="${CaseOhbp.patientStatus}" />
+                    <td class="h4" th:text="${CaseOhbp.patientLocation}" />
                 </tr>
                 </tbody>
 
