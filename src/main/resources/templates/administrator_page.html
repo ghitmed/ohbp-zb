@@ -14,7 +14,7 @@
     .table {
       border-collapse: separate;
       border-spacing: 0 30px;
-      text-justify: center;
+      text-justfy: center;
       text-align: center;
     }
 
@@ -118,7 +118,6 @@ window.onbeforeunload = function() {
                     </li>
 
 
-
                 </ul>
             </div>
         </div>
@@ -157,6 +156,51 @@ window.onbeforeunload = function() {
             </div>
         </div>
     </div>
+    <div>
+        <div class="container-flex">
+
+            <h3>Hitni slučajevi</h3>
+
+            <hr/>
+
+            <table class="table table-bordered table-striped">
+
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Trijažna kategorija</th>
+                    <th>Broj Slučaja</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Vrijeme dolaska</th>
+                    <th>Retrijaža</th>
+                    <th>Status</th>
+                    <th>Status</th>
+                    <th>Dijagnostika</th>
+                    <th>lokacija</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="CaseOhbp: ${allCases}">
+                    <td th:text="${CaseOhbp.id}" />
+                    <td th:text="${CaseOhbp.triageCategory}" />
+                    <td th:text="${CaseOhbp.caseID}" />
+                    <td th:text="${CaseOhbp.patientFirstName}" />
+                    <td th:text="${CaseOhbp.patientLastName}" />
+                    <td th:text="${CaseOhbp.timeOfArrival}" />
+                    <td th:text="${CaseOhbp.patientReTriage}" />
+                    <td th:text="${CaseOhbp.completedWork}"/>
+                    <td th:text="${CaseOhbp.workInProgress}"/>
+                    <td th:text="${CaseOhbp.patientStatus}" />
+                    <td th:text="${CaseOhbp.patientLocation}" />
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
     <div class="">
         <div class="container-flex">
             <div class="table-responsive d-flex flex-grow-1" style="">

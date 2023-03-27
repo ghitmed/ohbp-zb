@@ -110,7 +110,7 @@ public class CaseOhbpController {
                          @RequestParam(defaultValue = "8") int size,
                          @RequestParam(defaultValue = "id,asc") String[] sort) {
         try {
-            List<CaseOhbp> casesCaseOhbp = new ArrayList<CaseOhbp>();
+            List<CaseOhbp> casesZbOhbp = new ArrayList<CaseOhbp>();
 
             String sortField = sort[0];
             String sortDirection = sort[1];
@@ -128,9 +128,9 @@ public class CaseOhbpController {
                 model.addAttribute("keyword", keyword);
             }
 
-            casesCaseOhbp = mediquePage.getContent();
+            casesZbOhbp = mediquePage.getContent();
 
-            model.addAttribute("tutorials", casesCaseOhbp);
+            model.addAttribute("allCases", casesZbOhbp);
             model.addAttribute("currentPage", mediquePage.getNumber() + 1);
             model.addAttribute("totalItems", mediquePage.getTotalElements());
             model.addAttribute("totalPages", mediquePage.getTotalPages());
