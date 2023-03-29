@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -244,6 +244,42 @@
                 </tr>
                 </tbody>
             </table>
+
+            <table class="table table-responsive table-striped">
+                <thead>
+
+                <tr>
+                    <th class="h3">ID</th>
+                    <th class="h3">Trijažna kategorija</th>
+                    <th class="h3">Broj Slučaja</th>
+                    <th class="h3">Vrijeme dolaska</th>
+                    <th class="h3">Retrijaža</th>
+                    <th class="h3">Status</th>
+                    <th class="h3">Dijagnostika</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="CaseOhbp: ${allCases}">
+                    <td class="h1" th:text="${CaseOhbp.id}"></td>
+                    <td th:text="${CaseOhbp.triageCategory}"
+                        th:style="'background-color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'}) + '; color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'})">
+                    </td>
+                    <td class="h2" th:text="${CaseOhbp.caseID}"></td>
+                    <td class="h2" th:text="${CaseOhbp.timeOfArrival}"></td>
+                    <td class="h2" th:text="${CaseOhbp.patientReTriage}"></td>
+                    <td class="h2">
+                        <span th:text="${CaseOhbp.completedWork}"></span>
+                        <span> / </span>
+                        <span th:text="${CaseOhbp.workInProgress}"></span>
+                    </td>
+                    <td class="h2" th:text="${CaseOhbp.patientStatus}"></td>
+                </tr>
+                </tbody>
+
+            </table>
+
+
+
         </div>
     </div>
 </div>

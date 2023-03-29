@@ -1,6 +1,6 @@
 package com.p2ohbpzabokradno.ohbp.controller;
 
-import com.p2ohbpzabokradno.ohbp.model.CaseOhbp;
+import com.p2ohbpzabokradno.ohbp.model.*;
 import com.p2ohbpzabokradno.ohbp.repository.CaseOhbpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,7 +32,7 @@ public class CaseOhbpController {
     @GetMapping("/")
     public String redirectToAdmin() {
 
-        return "redirect:/template/admnistrator_page";
+        return "redirect:/administrator_page";
     }
 
     @GetMapping("/redirectToDashboardOhbp")
@@ -78,27 +79,29 @@ public class CaseOhbpController {
     ;
 
     @GetMapping("/redirectToBis")
-    public String redirectToBis() {
+    public String redirectToBis(Model model) {
+        CaseOhbp case123 = new CaseOhbp();
+        case123.setTimeOfArrival(new Date());
 
+        model.addAttribute("caseOhbp", case123);
         return "BIS.html";
 
     }
 
 
-    @GetMapping({"/administrator_page",})
-    public ModelAndView getAllCases() {
-        ModelAndView casesOhbp = new ModelAndView("ohbpAll");
-        casesOhbp.addObject("zbohbp", caseOhbpRepository.findAll());
-        return casesOhbp;
+    @GetMapping("/administrator_page")
+    public String getAllCases(Model model) {
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        return "administrator_page.html";
     }
 
 
     @GetMapping("/createNewCase")
-    public String createNewCase(Integer caseID, String triageCategory, String patientFirstName, String patientLastName, Date timeOfArrival, int workInProgress, int completedWork, String patientStatus, String patientLocation, int patientObservation) {
-        CaseOhbp caseOhbp = new CaseOhbp(caseID, triageCategory, patientFirstName, patientLastName, timeOfArrival, workInProgress, completedWork, patientStatus, patientLocation, patientObservation);
-        caseOhbpRepository.save (caseOhbp);
+    public String createNewCase(@ModelAttribute("caseOhbp") CaseOhbp case123) {
+         caseOhbpRepository.save (case123);
 
-        return "redirect: BIS.html";
+
+        return "redirect:/redirectToBis";
 
     }
 

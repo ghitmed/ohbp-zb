@@ -84,38 +84,30 @@
     </div>
   </div>
 
-  <form style="width: 50%; margin:0 auto;">
+  <div style="width: 50%; margin:0 auto;">
 
     <div class="row">
-      <form th:action="@{createNewCase}">
+      <form th:action="@{/createNewCase}" method="get" th:object="${caseOhbp}">
 
-
-        <label class="d-block mb-2">ID:</label>
-        <input th:field="${caseOhbp.caseID}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="caseID" datatype="number" min="40" pattern="[0-9]{2,}" required/>
 
         <label class="d-block mb-2">Trijaža:</label>
-        <input th:field="${caseOhbp.triageCategory}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="triageCategory" datatype="number" min="20" pattern="[0-9]{2,}" required/>
-
+        <input th:field="${caseOhbp.triageCategory}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="triageCategory" datatype="number"  required/>
         <label class="d-block mb-2">Ime:</label>
-        <input th:field="${caseOhbp.patientFirstName}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientFirstName" datatype="text" min="20" pattern="[0-9]{2,}" required/>
+        <input th:field="${caseOhbp.patientFirstName}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientFirstName" datatype="text"  required/>
         <label class="d-block mb-2">Prezime:</label>
-        <input th:field="${caseOhbp.patientLastName}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientLastName" datatype="text" min="40" pattern="[0-9]{2,}" required/>
-
+        <input th:field="${caseOhbp.patientLastName}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientLastName" datatype="text" min="40"  required/>
         <label class="d-block mb-2">Dolazak:</label>
-        <input th:field="${caseOhbp.timeOfArrival}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="timeOfArrival" datatype="date" min="20" pattern="[0-9]{2,}" required/>
-
+        <input th:field="${caseOhbp.timeOfArrival}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="timeOfArrival" datatype="datetime-local"  required/>
         <label class="d-block mb-2">U tijeku:</label>
-        <input th:field="${caseOhbp.workInProgress}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="workInProgress" datatype="number" min="20" pattern="[0-9]{2,}" required/>
+        <input th:field="${caseOhbp.workInProgress}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="workInProgress" datatype="number"  required/>
         <label class="d-block mb-2">Izvršeno:</label>
-        <input th:field="${caseOhbp.completedWork}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="completedWork" datatype="number" min="20" pattern="[0-9]{2,}" required/>
+        <input th:field="${caseOhbp.completedWork}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="completedWork" datatype="number"  required/>
         <label class="d-block mb-2">Status:</label>
-        <input th:field="${caseOhbp.patientStatus}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientStatus" datatype="text" min="20" pattern="[0-9]{2,}" required/>
-        <label class="d-block mb-2">U tijeku:</label>
-        <input th:field="${caseOhbp.patientLocation}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientLocation" datatype="text" min="20" pattern="[0-9]{2,}" required/>
+        <input th:field="${caseOhbp.patientStatus}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientStatus" datatype="text"  required/>
         <label class="d-block mb-2">Lokacija:</label>
-        <input th:field="${caseOhbp.patientObservation}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientObservation" datatype="int" min="20" pattern="[0-9]{2,}" required/>
-
-
+        <input th:field="${caseOhbp.patientLocation}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientLocation" datatype="text"  required/>
+        <label class="d-block mb-2">Opservacija:</label>
+        <input th:field="${caseOhbp.patientObservation}" class="col-xl-3 col-lg-12 col-md-5 col-sm-5 min-w-200 text-center mb-5" name="patientObservation" datatype="int"  required/>
         <div class="clear"></div>
 
         <button type="submit" class="btn mb-5 btn-danger"><b>SPREMI</b></button>
