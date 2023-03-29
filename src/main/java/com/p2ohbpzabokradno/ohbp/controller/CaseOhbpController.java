@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -107,12 +110,9 @@ public class CaseOhbpController {
     @GetMapping("/createNewCase")
     public String createNewCase(@ModelAttribute("caseOhbp") CaseOhbp case123) {
          caseOhbpRepository.save (case123);
-
-
         return "redirect:/redirectToBis";
 
     }
-
 
 
 
@@ -160,5 +160,23 @@ public class CaseOhbpController {
     }
 
 
+    @GetMapping("/obs_patients")
+    public String getAllObservationCasesPatient(Model model) {
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        return "observation_patients.html";
+    }
+
+    @GetMapping("/obs_ohbp")
+    public String getAllObservationCasesOhbp(Model model) {
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        return "observation_ohbp.html";
+    }
+
+    @GetMapping("/dashboard_ohbp")
+    public String getAllDashboardCasesOhbp(Model model) {
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        return "dashboard_ohbp.html";
+    }
 }
+
 

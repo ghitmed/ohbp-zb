@@ -14,7 +14,7 @@
     .table {
       border-collapse: separate;
       border-spacing: 0 30px;
-      text-justify: center;
+      text-justfy: center;
       text-align: center;
     }
 
@@ -37,345 +37,180 @@
     }
   </style>
   <script>
+    //timer za promjenu tranice
     setTimeout(function() {
-      window.location.href = "/redirectToObservationOhbp";
-    }, 30000);
+      window.location.href = "/redirectToDashboardOhbp";
+    }, 120000);
   </script>
   <script>
-    function blink() {
+    // skripta za blinkanje zivotno ugroženi pacijent
+    var isBlinking = false;
+    var elementToBlink = document.getElementById("element-to-blink");
+    var intervalId;
+    var blinkStatus = localStorage.getItem("blinkStatus");
+
+    function startBlink() {
       var elementToBlink = document.getElementById("element-to-blink");
       elementToBlink.classList.toggle("blink");
     }
-    var isBlinking = false;
+
+    function checkBlinkStatus() {
+      if (blinkStatus === "true") {
+        startBlink();
+      }
+    }
+    // ne rad da se nastavi blinkanje nakon promjene strance, za sad treba na svakoj stranici upaliti gumb
+    window.onload = checkBlinkStatus;
+    window.onbeforeunload = function() {
+      if (isBlinking) {
+        localStorage.setItem("blinkStatus", "true");
+      } else {
+        localStorage.setItem("blinkStatus", "false");
+      }
+    };
   </script>
 </head>
 
-<body class="container-max-width p-3">
-<nav class="navbar navbar-expand-md navbar" style="">
-  <div class="container-flex">
-    <div class="navbar-collapse text-center justify-content-between collapse show" id="navbar2SupportedContent"
-         style="">
-      <ul class="navbar-nav">
-        <li class="h4 text-light text-center">
-          <a class="nav-link mx-2"
-             onclick="window.location.href='/'">Administrator</a>
-        </li>
-        <li class="h4 text-light text-center d-flex flex-grow-1">
-          <a class="nav-link mx-2" onclick="window.location.href='/redirectToDashboardOhbp'">OHBP</a>
-        </li>
-        <li class="h4 text-light text-center d-flex flex-grow-1">
-          <a class="nav-link mx-2" onclick="window.location.href='/redirectToObservationOhbp'">OHBP
-            Opservacija</a>
-        </li>
-        <li class="h4 text-light text-left d-flex flex-grow-1">
-          <a class="nav-link mx-2" onclick="window.location.href='/patient_page'">Pacijenti</a>
-        </li>
-        <li class="h4 text-light text-left d-flex flex-grow-1">
-          <a class="nav-link mx-2" onclick="window.location.href='/redirectToTriageCategory'">Trijažna kategorija</a>
-        </li>
-        <li class="h4 text-light text-left d-flex flex-grow-1">
-          <a class="nav-link mx-2" onclick="window.location.href='/redirectToObservationPatients'">Pacijenti
-            opservacija</a>
-        </li>
-        <li class="h4 text-light text-center d-flex">
-          <a class="nav-link mx-2" onclick="window.location.href='/redirectToLegend'">Legenda</a>
-        </li>
-      </ul>
+<body onload="checkBlinkStatus()">
+<div class="container-max-width p-3">
+  <nav class="navbar navbar-expand-md navbar" style="">
+    <div class="container-flex">
+      <div class="navbar-collapse text-center justify-content-between collapse show" id="navbar2SupportedContent" style="">
+        <ul class="navbar-nav">
+          <li class="h4 text-light text-center">
+            <a class="nav-link mx-2" onclick="window.location.href='/'">Administrator</a>
+          </li>
+          <li class="h4 text-light text-center d-flex flex-grow-1">
+            <a class="nav-link mx-2" onclick="window.location.href='/dashboard_ohbp'">OHBP</a>
+          </li>
+          <li class="h4 text-light text-center d-flex flex-grow-1">
+            <a class="nav-link mx-2" onclick="window.location.href='/obs_ohbp'">OHBP Opservacija</a>
+          </li>
+          <li class="h4 text-light text-left d-flex flex-grow-1">
+            <a class="nav-link mx-2" onclick="window.location.href='/patient_page'">Pacijenti</a>
+          </li>
+          <li class="h4 text-light text-left d-flex flex-grow-1">
+            <a class="nav-link mx-2" onclick="window.location.href='/redirectToTriageCategory'">Trijažna kategorija</a>
+          </li>
+          <li class="h4 text-light text-left d-flex flex-grow-1">
+            <a class="nav-link mx-2" onclick="window.location.href='/obs_patients'">Pacijenti opservacija</a>
+          </li>
+          <li class="h4 text-light text-center d-flex">
+            <a class="nav-link mx-2" onclick="window.location.href='/redirectToLegend'">Legenda</a>
+          </li>
+          <li class="h4 text-light text-center d-flex">
+            <a class="nav-link mx-2" onclick="window.location.href='/redirectToBis'">BIS</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-<div class="h-20 container-flex">
-  <div class="container-flex">
-    <div id="md-8" style="" class="row">
-      <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
-        <div class="display-4 p-3 d-flex justify-content-center align-items-center">
-          <a href="#" title="logo" style="text-align: center;" onclick="window.location.href='/'">
-            <img src="../ikone/logo_mali.webp" class="img-responsive"></a>
+  </nav>
+  <div class="h-20 container-flex">
+    <div class="container-flex">
+      <div id="md-8" style="" class="row">
+        <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
+          <div class="display-4 p-3 d-flex justify-content-center align-items-center">
+            <a href="#" title="logo" style="text-align: center;" onclick="window.location.href='/'">
+              <img src="../ikone/logo_mali.webp" class="img-responsive"></a>
+          </div>
+        </div>
+        <div class="text-left d-flex justify-content-center col-md-5 align-items-center" style="">
+          <h1 class="display-5 text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1" style="">
+            <b class="d-flex">Opća bolnica Zabok i bolnica hrvatskih veterana</b></h1>
+        </div>
+        <div class="d-flex align-items-center justify-content-center col-md-2" style="text-align: center;">
+          <h2 class="text-primary flex-grow-1" style="text-align: center" contenteditable="true"></h2>
+          <p>Datum 222 vrijeme</p>
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-end">
+          <button onclick="startBlink()">
+            <a> <img src="../ikone/hslucaj.webp" class="img-responsive"></a></button>
         </div>
       </div>
-      <div class="text-left d-flex justify-content-center col-md-5 align-items-center" style="">
-        <h1 class="display-5 text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1" style="">
-          <b class="d-flex">Opća bolnica Zabok i bolnica hrvatskih veterana</b></h1>
-      </div>
-      <div class="d-flex align-items-center justify-content-center col-md-2" style="text-align: center;">
-        <h2 class="text-primary flex-grow-1" style="text-align: center" contenteditable="true">
-          <b>25.02.2023&nbsp; </b><b>18:20:35&nbsp;</b></h2>
-      </div>
-      <div class="col-md-2 d-flex align-items-center justify-content-end">
-        <button onclick="blink()">
-          <a> <img src="../ikone/hslucaj.webp" class="img-responsive"></a></button>
-      </div>
-    </div>
-    <hr class="solid">
-  </div>
-</div>
-<div class="" style="">
-  <div class="container-flex">
-    <div id="element-to-blink" class="toggleBlink">
-      <h1 class="text-white p-3 d-flex justify-content-center flex-grow-1 align-items-center">ŽIVOTNO UGROŽENI PACIJENT</h1>
+      <hr class="solid">
     </div>
   </div>
-</div>
-<div class="">
-  <div class="container-flex">
-    <div class="table-responsive d-flex flex-grow-1" style="">
-      <table class="table table-striped">
-        <thead class="thead-dark">
-        <tr class="display: inline-block">
-          <th class="font-weight-bold">
-            <h3 class=".d-print-table-cell">Trijažna kategorija</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3 class=".d-print-table-cell">ID Pacijent</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3>Ime</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3>Prezime</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3>Vrijeme dolaska</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3></h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3>Status</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3>Dijagnostika</h3>
-          </th>
-          <th class="font-weight-bold">
-            <h3>Lokacija</h3>
-          </th>
-          <th class="font-weight-bold"></th>
+  <div class="" style="">
+    <div class="container-flex">
+      <div id="element-to-blink" class="toggleBlink">
+        <h1 class="text-white p-3 d-flex justify-content-center flex-grow-1 align-items-center">ŽIVOTNO UGROŽENI PACIJENT</h1>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="container-flex">
+      <table class="table table-responsive table-striped">
+        <thead>
+        <tr>
+          <th class="h3">ID</th>
+          <th class="h3">Trijažna kategorija</th>
+          <th class="h3">Broj Slučaja</th>
+          <th class="h3">Ime</th>
+          <th class="h3">Prezime</th>
+          <th class="h3">Vrijeme dolaska</th>
+          <th class="h3">Retrijaža</th>
+          <th class="h3">Status</th>
+          <th class="h3">Dijagnostika</th>
+          <th class="h3">Lokacija</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td class="font-weight-bold" style="background-color: red">
-            <h3 class="text-center d-flex justify-content-center align-items-center"></h3>
+        <tr th:each="CaseOhbp: ${allCases}">
+          <td class="h2" th:text="${CaseOhbp.id}">
           </td>
-          <td class="font-weight-bold">
-            <h3>#435821</h3>
+          <td th:text="${CaseOhbp.triageCategory}" th:style="'background-color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'}) + '; color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'})">
           </td>
-          <td class="font-weight-bold">
-            <h3>Marko</h3>
+          <td class="h2" th:text="${CaseOhbp.caseID}">
           </td>
-          <td class="font-weight-bold">
-            <h3>Marković</h3>
+          <td class="h2" th:text="${CaseOhbp.patientFirstName}">
           </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 10:16</h3>
+          <td class="h2" th:text="${CaseOhbp.patientLastName}">
           </td>
-          <td class="font-weight-bold">
-            <!-- <h3 >25.02.2023 10:16</h3>-->
+          <td class="h2" th:text="${CaseOhbp.timeOfArrival}">
           </td>
-          <td>
-            <a href="#" title="status">
-              <h3> 1/5 </h3>
-            </a>
+          <td class="h2" th:text="${CaseOhbp.patientReTriage}">
+            <!--
+               Pokušaj retrijaže u dokumentu adminpage_testiranje.txt
+
+             -->
           </td>
-          <td>
-            <a href="#" title="hitna"><img src="../ikone/hitna.webp"></a>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Reanimacija</h3>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-weight-bold" style="background-color: red">
-            <h3 class="align-items-center"></h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>#435821</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Lidija </h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Horvat</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 10:23</h3>
-          </td>
-          <td class="font-weight-bold">
-            <!--  <h3 >25.02.2023 10:23</h3>-->
+          <td class="h2">
+            <span th:text="${CaseOhbp.completedWork}"></span>
+            <span> / </span>
+            <span th:text="${CaseOhbp.workInProgress}"></span>
           </td>
           <td>
-            <a href="#" title="status">
-              <h3> 2/4 </h3>
-            </a>
+            <img th:if="${CaseOhbp.patientStatus == '0'}" src="/ikone/0.webp" alt="cekaonica/ostalo">
+            <img th:if="${CaseOhbp.patientStatus == '1'}" src="/ikone/1.webp" alt="trijaza">
+            <img th:if="${CaseOhbp.patientStatus == '2'}" src="/ikone/2.webp" alt="pregled dr/ostali postupci">
+            <img th:if="${CaseOhbp.patientStatus == '3'}" src="/ikone/3.webp" alt="RTG, CT, MR">
+            <img th:if="${CaseOhbp.patientStatus == '4'}" src="/ikone/4.webp" alt="Laboratorij">
+            <img th:if="${CaseOhbp.patientStatus == '5'}" src="/ikone/5.webp" alt="opservacija">
           </td>
-          <td>
-            <a href="#" title="hitna"><img src="../ikone/hitna.webp"></a>
+          <td class="h2" th:text="${CaseOhbp.patientLocation}" >
+            <!-- printanje  -->
           </td>
-          <td class="font-weight-bold">
-            <h3>Akutni dio </h3>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-weight-bold" style="background-color:orange">
-            <h3></h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>#432821</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Ana</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Anić</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 11:13</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3><a href="#" title="retr"> </a></h3>
-          </td>
-          <td>
-            <a href="#" title="status">
-              <h3> 1/3 </h3>
-            </a>
-          </td>
-          <td>
-            <a href="#" title="krevet"><img src="../ikone/krevet3.webp"></a>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Subakutni dio</h3>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-weight-bold" style="background-color:yellow">
-            <h3></h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>#347853</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Ivan</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Horvat</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 10:53</h3>
-          </td>
-          <td class="font-weight-bold">
-          </td>
-          <td>
-            <a href="#" title="status">
-              <h3> 2/3 </h3>
-            </a>
-          </td>
-          <td>
-            <a href="#" title="krevet"><img src="../ikone/krevet3.webp"></a>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Subakutni dio </h3>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-weight-bold" style="background-color:yellow">
-            <h3></h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>#339821</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Marko</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Županić</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 11:40</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3><a href="#" title="retr"> </a></h3>
-          </td>
-          <td>
-            <a href="#" title="status">
-              <h3> 1/3 </h3>
-            </a>
-          </td>
-          <td>
-            <a href="#" title="hitna"><img src="../ikone/rtg.webp"></a>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Subakutni dio</h3>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-weight-bold" style="background-color:green">
-            <h3></h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>#443521</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Stipe </h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Stipić</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 10:20</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3><a href="#" title="retr"> <img src="../ikone/upitnik.webp"></a></h3>
-          </td>
-          <td>
-            <!-- <a href="#" title="hitna"><img src="../ikone/kat4.webp"></a>-->
-          </td>
-          <td>
-            <a href="#" title="hitna"><img src="../ikone/kat4.webp"></a>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Čekaonica</h3>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-weight-bold" style="background-color: #2c76f8">
-            <h3></h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>#743866</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Ivo</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>Ivo</h3>
-          </td>
-          <td class="font-weight-bold">
-            <h3>25.02.2023 09:30</h3>
-          </td>
-          <td class="font-weight-bold"></td>
-          <td>
-            <!--<a href="#" title="hitna"><img src="../ikone/osoba.webp"></a>-->
-          </td>
-          <td>
-            <a href="#" title="hitna"><img src="../ikone/osoba.webp"></a>
-          </td>
-          <td class="font-weight-bold" >
-            <h3>Čekaonica</h3>
-          </td>
+          <script>
+            function printCell() {
+              var cellId = document.getElementById("cellId").textContent;
+              window.open('/print/' + CaseOhbp.caseID);
+            }
+          </script>
         </tr>
         </tbody>
       </table>
     </div>
-  </div>
-</div>
-<div class="p-3 text-muted border-top">
-  <div class="container-flex">
-    <div class="row d-flex justify-content-between">
-      <div class="col-lg-8 col-md-6">
-        <p class="mb-0"> © OHBP Opća bolnica Zabok i bolnica hrvatskih veterana 2023 || Health IT Akademija 2023</p>
+    <div class="p-3 text-muted border-top">
+      <div class="container-flex">
+        <div class="row d-flex justify-content-between">
+          <div class="col-lg-8 col-md-6">
+            <p class="mb-0"> © OHBP Opća bolnica Zabok i bolnica hrvatskih veterana 2023 || Health IT Akademija 2023</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 </body>
+
 </html>
