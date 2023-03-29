@@ -163,7 +163,6 @@
                 <thead>
 
                 <tr>
-                    <th class="h3">ID</th>
                     <th class="h3">Trijažna kategorija</th>
                     <th class="h3">Broj Slučaja</th>
                     <th class="h3">Ime</th>
@@ -178,7 +177,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="CaseOhbp: ${allCases}">
-                    <td class="h2" th:text="${CaseOhbp.id}"/>
                     <td th:text="${CaseOhbp.triageCategory}"
                         th:style="'background-color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'}) + '; color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'})">
                     </td>
@@ -187,7 +185,6 @@
                     <td class="h2" th:text="${CaseOhbp.patientLastName}"/>
                     <td class="h2" th:text="${CaseOhbp.timeOfArrival}"/>
                     <td class="h2" th:text="${CaseOhbp.patientReTriage}"/>
-
 
                    <!--
                    Pokušaj retrijaže u dokumentu adminpage_testiranje.txt
