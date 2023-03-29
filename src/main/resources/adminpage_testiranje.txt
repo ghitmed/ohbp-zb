@@ -188,9 +188,78 @@
                     <td class="h2" th:text="${CaseOhbp.patientReTriage}"/>
 
 
-                   <!--
-                   Pokušaj retrijaže u dokumentu adminpage_testiranje.txt
+                    // 1vi pokušaj
+                    </script>
+                    <td>
+                        <script th:inline="javascript">
+                            <div th:id="'timer-' + ${CaseOhbp.timeOfArrival}"></div>
+                            <script th:inline="javascript">
+                                // uzimanje vremena za izračun
+                                var time = [[${CaseOhbp.timeOfArrival}]];
 
+                                // timer
+                                function startTimer(id, time) {
+                                var timer = document.getElementById(id);
+                                var minutes = Math.floor(time / 60);
+                                var seconds = time % 60;
+                                var interval = setInterval(function() {
+                                if (time > 0) {
+                                time--;
+                                minutes = Math.floor(time / 60);
+                                seconds = time % 60;
+                                timer.innerHTML = minutes + ':' + (seconds < 10 ? '0' + seconds : seconds);
+                            } else {
+                                clearInterval(interval);
+                                timer.innerHTML = 'Time\'s up!';
+                            }
+                            }, 1000);
+                            }
+
+                                // pozivanje timera
+                                startTimer('timer-' + [[${CaseOhbp.timeOfArrival}]], time);
+                        </script>
+                    </td>
+
+                    <!--
+                    ovo nisam stigao još proći
+                    https://frontbackend.com/thymeleaf/spring-boot-bootstrap-thymeleaf-countdown
+
+                    <td th:text="${#dates.format(timeInCell, 'HH:mm:ss')}"></td>
+
+
+                    <td>
+                        <span th:text="${#dates.format(timeInCell, 'HH:mm:ss')}" style="display:none;"></span>
+                        <span id="countdown"></span>
+                    </td>
+
+
+
+                    /prema primjeru sa stack overflow...ne radi
+                    https://stackoverflow.com/questions/65267575/multiple-javascript-timers-on-one-page-with-thymeleaf-generated-list
+
+
+                        //konverzija localtime u java script objekt datumm , preko thymeleaf  #dates.format()
+                        <td>
+                        <span th:text="${#dates.format(timeInCell, 'HH:mm:ss')}" style="display:none;"></span>
+                        <span id="countdown"></span>
+                    </td>
+                        <script th:inline="javascript">
+                            var timeInCell = new Date([[${#dates.format(timeInCell, 'yyyy')}]],[[${#dates.format(timeInCell, 'MM') - 1}]],[[${#dates.format(timeInCell, 'dd')}]],[[${#dates.format(timeInCell, 'HH')}]],[[${#dates.format(timeInCell, 'mm')}]],[[${#dates.format(timeInCell, 'ss')}]]);
+                            var countdownElement = document.getElementById("countdown");
+                            var countdownInterval = setInterval(function() {
+                                var currentTime = new Date();
+                                var timeDifference = timeInCell - currentTime;
+                                var hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+                                var minutes = Math.floor((timeDifference / 1000 / 60) % 60);
+                                var seconds = Math.floor((timeDifference / 1000) % 60);
+                                countdownElement.textContent = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+                                if (timeDifference < 0) {
+                                    clearInterval(countdownInterval);
+                                    countdownElement.textContent = "00:00:00";
+                                }
+                            }, 1000);
+
+                     
                  -->
 
                     <td class="h2">
