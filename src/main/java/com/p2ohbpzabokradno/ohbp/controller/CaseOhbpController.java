@@ -95,6 +95,14 @@ public class CaseOhbpController {
         return "administrator_page.html";
     }
 
+    @GetMapping("/patient_page")
+    public String getAllCasesPatient(Model model) {
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        return "patients.html";
+    }
+
+
+
 
     @GetMapping("/createNewCase")
     public String createNewCase(@ModelAttribute("caseOhbp") CaseOhbp case123) {
