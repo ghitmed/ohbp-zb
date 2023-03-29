@@ -104,6 +104,9 @@ public class CaseOhbpController {
 
 
 
+
+
+
     @GetMapping("/template/admnistrator_page")
     public String getAll(Model model, @RequestParam(required = false) String keyword,
                          @RequestParam(defaultValue = "1") int page,

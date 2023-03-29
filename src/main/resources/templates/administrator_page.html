@@ -173,6 +173,7 @@
                     <th class="h3">Status</th>
                     <th class="h3">Dijagnostika</th>
                     <th class="h3">Lokacija</th>
+                    <th class="h3">Print</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -207,6 +208,19 @@
                         <img th:if="${CaseOhbp.patientStatus == '5'}" src="/ikone/5.webp" alt="opservacija"/>
                     </td>
                     <td class="h2" th:text="${CaseOhbp.patientLocation}"/>
+
+                    <!-- printanje  -->
+                    <td>
+                        <span th:text="${CaseOhbp.caseID}" id="cellId"></span>
+                        <button onclick="printCell()" id="printButton">Print</button>
+                    </td>
+                    <script>
+                        function printCell() {
+                            var cellId = document.getElementById("cellId").textContent;
+                            window.open('/print/' + CaseOhbp.caseID);
+                        }
+                    </script>
+
                 </tr>
                 </tbody>
 
