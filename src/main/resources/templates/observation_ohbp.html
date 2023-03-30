@@ -162,7 +162,7 @@
                             <td class="h2" th:text="${CaseOhbp.caseID}"></td>
                             <td class="h2" th:text="${CaseOhbp.patientFirstName}"></td>
                             <td class="h2" th:text="${CaseOhbp.patientLastName}"></td>
-                            <td class="h2" th:text="${CaseOhbp.timeOfArrival}"></td>
+                            <td class="h2" th:text="${#dates.format(CaseOhbp.timeOfArrival, 'dd.MM.yyyy HH:mm:ss')}"></td>
                             <td class="h2" th:text="${CaseOhbp.patientLocation}"></td>
                         </tr>
                         </tbody>

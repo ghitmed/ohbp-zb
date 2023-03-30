@@ -141,9 +141,9 @@
                         th:style="'background-color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'}) + '; color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'})">
                     </td>
                     <td class="h2" th:text="${CaseOhbp.caseID}"></td>
-                    <td class="h2" th:text="${CaseOhbp.timeOfArrival}"></td>
+                    <td class="h2" th:text="${#dates.format(CaseOhbp.timeOfArrival, 'dd.MM.yyyy HH:mm:ss')}"></td>
                     <!--
-                    Pokušaj retrijaže u dokumentu adminpage_testiranje.txt
+
 
                   -->
 

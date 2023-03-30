@@ -164,11 +164,11 @@
           </td>
           <td class="h2" th:text="${CaseOhbp.patientLastName}">
           </td>
-          <td class="h2" th:text="${CaseOhbp.timeOfArrival}">
+          <td class="h2" th:text="${#dates.format(CaseOhbp.timeOfArrival, 'dd.MM.yyyy HH:mm:ss')}"></td>
           </td>
           <td class="h2" th:text="${CaseOhbp.patientReTriage}">
             <!--
-               Pokušaj retrijaže u dokumentu adminpage_testiranje.txt
+
 
              -->
           </td>
