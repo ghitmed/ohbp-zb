@@ -131,7 +131,6 @@
                     <th class="h3">Trijažna kategorija</th>
                     <th class="h3">Broj Slučaja</th>
                     <th class="h3">Vrijeme dolaska</th>
-                    <th class="h3">Retrijaža</th>
                     <th class="h3">Status</th>
                     <th class="h3">Dijagnostika</th>
                 </tr>
@@ -147,14 +146,8 @@
 
                     <!--
                     Pokušaj retrijaže u dokumentu adminpage_testiranje.txt
-
                   -->
 
-                    <td class="h2">
-                        <span th:text="${CaseOhbp.completedWork}"></span>
-                        <span> / </span>
-                        <span th:text="${CaseOhbp.workInProgress}"></span>
-                    </td>
                     <td>
                         <img th:if="${CaseOhbp.patientStatus == '0'}" src="/ikone/0.webp" alt="cekaonica/ostalo"/>
                         <img th:if="${CaseOhbp.patientStatus == '1'}" src="/ikone/1.webp" alt="trijaza"/>
