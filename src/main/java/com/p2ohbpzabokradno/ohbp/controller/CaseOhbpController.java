@@ -105,14 +105,16 @@ public class CaseOhbpController {
     }
 
 
-
-
     @GetMapping("/createNewCase")
     public String createNewCase(@ModelAttribute("caseOhbp") CaseOhbp case123) {
          caseOhbpRepository.save (case123);
         return "redirect:/redirectToBis";
 
     }
+
+
+
+
 
 
 
