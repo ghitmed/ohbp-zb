@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 
-
+//string slucaj
 @Entity
 @Table(name = "CaseOhbp")
 public class CaseOhbp {
