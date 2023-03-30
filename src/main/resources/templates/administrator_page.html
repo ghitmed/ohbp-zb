@@ -185,12 +185,37 @@
                     <td class="h2" th:text="${CaseOhbp.patientFirstName}"/>
                     <td class="h2" th:text="${CaseOhbp.patientLastName}"/>
                     <td class="h2" th:text="${#dates.format(CaseOhbp.timeOfArrival, 'dd.MM.yyyy HH:mm:ss')}"></td>
-                    <td class="h2" th:text="${CaseOhbp.patientReTriage}"/>
 
-                   <!--
+                     <td>
+                         <div th:if="${CaseOhbp.patientReTriage == 1}">
+                             <img id="flashing-icon" src="../ikone/ret.webp" />
+                             <script th:inline="javascript">
+                                 var icon = document.getElementById('flashing-icon');
+                                 setInterval(function() {
+                                     if (icon.style.display === 'none') {
+                                         icon.style.display = 'inline';
+                                     } else {
+                                         icon.style.display = 'none';
+                                     }
+                                 }, 500);
 
+                                 setTimeout(function() {
+                                     document.querySelector('img[src="../ikone/ret.webp"]').classList.remove('blinking');
+                                 }, 10000);
 
-                 -->
+                                 var lastBlinkTimestamp = localStorage.getItem('lastBlinkTimestamp');
+                                 if (lastBlinkTimestamp && Date.now() - lastBlinkTimestamp < 10000) {
+                                     document.querySelector('img[src="../ikone/ret.webp"]').classList.add('blinking');
+                                 }
+
+                             </script>
+
+                         </div>
+
+                         <div th:if="${CaseOhbp.patientReTriage == 0}">
+                             <img id="flashing-iconoff" src="../ikone/ret.webp" style="display:none;" />
+                         </div>
+                     </td>
 
                     <td class="h2">
                         <span th:text="${CaseOhbp.completedWork}"></span>
