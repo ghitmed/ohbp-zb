@@ -21,7 +21,7 @@ public class CaseOhbp {
     private int triageCategory;
 
     @Column(name = "hslucaj")
-    private Integer caseID;
+    private String caseID;
 
     @Column(name = "ime")
     private String patientFirstName;
@@ -63,7 +63,7 @@ public class CaseOhbp {
     public CaseOhbp() {
     }
 
-    public CaseOhbp(int id, int triageCategory, Integer caseID, String patientFirstName, String patientLastName, Date timeOfArrival, int patientReTriage, int completedWork, int workInProgress, String patientStatus, String patientLocation, int patientObservation, int patientArchive) {
+    public CaseOhbp(int id, int triageCategory, String caseID, String patientFirstName, String patientLastName, Date timeOfArrival, int patientReTriage, int completedWork, int workInProgress, String patientStatus, String patientLocation, int patientObservation, int patientArchive) {
         this.id = id;
         this.triageCategory = triageCategory;
         this.caseID = caseID;
@@ -95,11 +95,11 @@ public class CaseOhbp {
         this.triageCategory = triageCategory;
     }
 
-    public Integer getCaseID() {
+    public String getCaseID() {
         return caseID;
     }
 
-    public void setCaseID(Integer caseID) {
+    public void setCaseID(String caseID) {
         this.caseID = caseID;
     }
 
