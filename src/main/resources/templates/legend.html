@@ -11,43 +11,43 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded">
     <style>
-    .table {
-      border-collapse: separate;
-      border-spacing: 0 30px;
-      text-justify: center;
-      text-align: center;
-    }
+        .table {
+            border-collapse: separate;
+            border-spacing: 0 30px;
+            text-justfy: center;
+            text-align: center;
+        }
 
-    @keyframes blink {
-      0% {
-        background-color: transparent;
-      }
+        @keyframes blink {
+            0% {
+                background-color: transparent;
+            }
 
-      50% {
-        background-color: red;
-      }
+            50% {
+                background-color: red;
+            }
 
-      100% {
-        background-color: transparent;
-      }
-    }
+            100% {
+                background-color: transparent;
+            }
+        }
 
-    .blink {
-      animation: blink 1s infinite;
-    }
-  </style>
+        .blink {
+            animation: blink 1s infinite;
+        }
+    </style>
     <script>
-    setTimeout(function() {
-      window.location.href = "/redirectToPatients";
-    }, 1800000);
-  </script>
+        setTimeout(function() {
+            window.location.href = "/redirectToPatients";
+        }, 1800000);
+    </script>
     <script>
-    function blink() {
-      var elementToBlink = document.getElementById("element-to-blink");
-      elementToBlink.classList.toggle("blink");
-    }
-    var isBlinking = false;
-  </script>
+        function blink() {
+            var elementToBlink = document.getElementById("element-to-blink");
+            elementToBlink.classList.toggle("blink");
+        }
+        var isBlinking = false;
+    </script>
 </head>
 
 <body class="container-max-width p-3">
@@ -87,6 +87,9 @@
 </div>
 <div class="py-3" style="">
     <div class="container-flex">
+        <h3 class="text-center display-4" contenteditable="true" >Tumač znakova&nbsp;</h3>
+        <div class="p-3 text-muted border-down">
+        </div>
     </div>
 </div>
 <div class="">
@@ -106,67 +109,93 @@
                     </th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style="">
                 <tr>
                     <td class="font-weight-bold">
                         <h3>
-                            <a href="#" title="hitna"><img src="../ikone/hitna.webp"></a>
+                            <a href="#" title="hitna"><img src="../ikone/2.webp"></a>
                         </h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Hitna</h3>
+                        <h3 class="">OBRADA LIJEČNIKA</h3>
                     </td>
-                    <td class="font-weight-bold">
-                        <h3 >Hitni slučaj</h3>
+                    <td class="font-weight-bold d-flex text-left">
+                        <h3 class="text-nowrap">Pacijent se trenutno nalazi na obradi od strane liječnika na odjelu Objedinjenog hitnog bolničkog prijema.</h3>
                     </td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">
-                        <h3><a href="#" title="hitna"><img src="../ikone/rtg.webp"></a>
+                        <h3><a href="#" title="hitna"><img src="../ikone/5.webp"></a>
                         </h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>RTG</h3>
+                        <h3>OPSERVACIJA</h3>
                     </td>
-                    <td class="font-weight-bold">
-                        <h3>RTG pretrage</h3>
+                    <td class="font-weight-bold d-flex text-left">
+                        <h3 class="text-nowrap">Pacijent se nalazi u opservaciji, tj.zbog zdravstvenog stanja potrebna je dodatna medicinska skrb.</h3>
                     </td>
+                    <td class="font-weight-bold"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">
                         <h3>
-                            <a href="#" title="krevet"><img src="../ikone/krevet3.webp"></a>
+                            <a href="#" title="hitna"><img src="../ikone/3.webp"></a>
                         </h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Observacija</h3>
+                        <h3>RADIOLOŠKA DIJAGNOSTIKA</h3>
                     </td>
-                    <td class="font-weight-bold">
-                        <h3>Observacija pacijenta</h3>
+                    <td class="font-weight-bold d-flex">
+                        <h3 class="text-left d-flex">Pacijent se nalazi na odjelu radiologije. U tijeku je radiološka dijagnostika (RTG, CT, MR).</h3>
                     </td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">
-                        <h3>
-                            <a href="#" title="hitna"><img src="../ikone/kat4.webp"></a>
+                        <h3><a href="#" title="hitna"><img src="../ikone/4.webp"></a>
                         </h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Laboratorij</h3>
+                        <h3>LABORATORIJSKA DIJAGNOSTIKA</h3>
+                    </td>
+                    <td class="font-weight-bold d-flex text-left">
+                        <h3 class="">U tijeku je laboratorijska dijagnostika.</h3>
+                    </td>
+                    <td class="font-weight-bold"></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">
+                        <h3><a href="#" title="hitna"><img src="../ikone/6.webp"></a>
+                        </h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Laboratorij pretrage</h3>
+                        <h3>OSTALA MEDICINSKA POMOĆ</h3>
                     </td>
+                    <td class="font-weight-bold d-flex">
+                        <h3 class="d-flex text-left">Pacijentu se pruža potrebna ostala medicinska pomoć.</h3>
+                    </td>
+                    <td class="font-weight-bold"></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">
+                        <h3>OPSERVACIJA </h3>
+                    </td>
+                    <td class="font-weight-bold">
+                        <h3></h3>
+                    </td>
+                    <td class="font-weight-bold d-flex text-left">
+                        <h3 class="text-nowrap">Status izvršenosti pokazuje koliko je dijagnostičkih pretraga pacijent obavio u odnosu na broj upućenih dijagnostičkih pretraga od strane liječnika.</h3>
+                    </td>
+                    <td class="font-weight-bold"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold" style="background-color: red">
-                        <h3></h3>
+                        <h3> </h3>
                     </td>
                     <td class="font-weight-bold">
-                        <h3>Reanimacija</h3>
+                        <h3>ŽIVOTNO UGROŽENI PACIJENT</h3>
                     </td>
-                    <td class="font-weight-bold">
-                        <h3>Životno ugorženi pacijent</h3>
+                    <td class="font-weight-bold d-flex" style="">
+                        <h3 class="text-left d-flex">Pojava treptajuće crvene linije na vrhu prikaza ukazuje na dolazak jednog ili više životno ugroženih pacijenata.&nbsp;<br>Kod takvih pacijenata potrebna je hitna medicinska pomoć svrhu spašavanja i stabilizacije života pacijenta.</h3>
                     </td>
                 </tr>
                 </tbody>
@@ -190,5 +219,4 @@
     </div>
 </div>
 </body>
-
 </html>
