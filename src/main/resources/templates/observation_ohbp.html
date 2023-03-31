@@ -37,7 +37,7 @@
         }
     </style>
     <script>
-        setTimeout(function () {
+        setTimeout(function() {
             window.location.href = "/redirectToDashboardOhbp";
         }, 1800000);
     </script>
@@ -46,7 +46,6 @@
             var elementToBlink = document.getElementById("element-to-blink");
             elementToBlink.classList.toggle("blink");
         }
-
         var isBlinking = false;
     </script>
     <style>
@@ -59,24 +58,22 @@
 <body class="container-max-width p-3">
 <nav class="navbar navbar-expand-md navbar" style="">
     <div class="container-flex">
-        <div class="navbar-collapse text-center justify-content-between collapse show" id="navbar2SupportedContent"
-             style="">
+        <div class="navbar-collapse text-center justify-content-between collapse show" id="navbar2SupportedContent" style="">
             <ul class="navbar-nav">
                 <li class="h4 text-light text-center">
-                    <a class="nav-link mx-2" onclick="window.location.href='/'">Administrator</a>
+                    <a class="nav-link mx-2" onclick="window.location.href='/'">Prijem</a>
                 </li>
                 <li class="h4 text-light text-center d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/dashboard_ohbp'">OHBP</a>
+                    <a class="nav-link mx-2" onclick="window.location.href='/dashboard_ohbp'">Glavni prikaz</a>
                 </li>
                 <li class="h4 text-light text-center d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/obs_ohbp'">OHBP Opservacija</a>
+                    <a class="nav-link mx-2" onclick="window.location.href='/obs_ohbp'">Opservacija</a>
                 </li>
                 <li class="h4 text-light text-left d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/patient_page'">Pacijenti</a>
+                    <a class="nav-link mx-2" onclick="window.location.href='/patient_page'">Čekaonica</a>
                 </li>
                 <li class="h4 text-light text-left d-flex flex-grow-1">
-                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToTriageCategory'">Trijažna
-                        kategorija</a>
+                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToTriageCategory'">Trijažna kategorija</a>
                 </li>
                 <li class="h4 text-light text-left d-flex flex-grow-1">
                     <a class="nav-link mx-2" onclick="window.location.href='/obs_patients'">Pacijenti opservacija</a>
@@ -84,27 +81,28 @@
                 <li class="h4 text-light text-center d-flex">
                     <a class="nav-link mx-2" onclick="window.location.href='/redirectToLegend'">Legenda</a>
                 </li>
+                <li class="h4 text-light text-center d-flex">
+                    <a class="nav-link mx-2" onclick="window.location.href='/redirectToBis'">BIS</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="h-20 container-flex">
-    <div class="container-flex">
+    <div class="container-flex" >
         <div id="md-8" style="" class="row">
-            <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
+            <div class="d-flex align-items-center justify-content-start col-md-2" style="">
                 <div class="display-4 p-3 d-flex justify-content-center align-items-center">
                     <a href="#" title="logo" style="text-align: center;" onclick="window.location.href='/'">
                         <img src="../ikone/bolnicaLogo.svg" class="img-responsive"></a>
                 </div>
             </div>
-            <div class="text-left d-flex justify-content-center col-md-5 align-items-center" style="">
-                <h1 class="display-5 text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1"
-                    style="">
-                    <b class="d-flex">Opća bolnica Zabok i bolnica hrvatskih veterana</b></h1>
+            <div class="text-left d-flex justify-content-center align-items-center col-md-7" style="">
+                <h3 class="display-4 text-primary" style="">
+                    <b class="d-flex">Opća bolnica Zabok i bolnica hrvatskih veterana</b></h3>
             </div>
-            <div class="d-flex align-items-center justify-content-center col-md-2" style="text-align: center;">
-                <h2 class="text-primary flex-grow-1" style="text-align: center" contenteditable="true">
-                    <b>25.02.2023&nbsp; </b><b>18:20:35&nbsp;</b></h2>
+            <div class="d-flex align-items-center justify-content-center col-md-1" style="text-align: center;">
+                <h2 class="flex-grow-1 text-white" style="text-align: center" contenteditable="true"><b>D</b></h2>
             </div>
             <div class="col-md-2 d-flex align-items-center justify-content-end">
                 <button onclick="blink()">
@@ -115,14 +113,13 @@
         <div class="" style="">
             <div class="container-flex">
                 <div id="element-to-blink" class="toggleBlink">
-                    <h1 class="text-white p-3 d-flex justify-content-center flex-grow-1 align-items-center">ŽIVOTNO
-                        UGROŽENI PACIJENT</h1>
+                    <h1 class="text-white p-3 d-flex justify-content-center flex-grow-1 align-items-center">ŽIVOTNO UGROŽENI PACIJENT</h1>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row p-3">
-                <h1 class="text-center text-primary">Pacijenti u opservaciji</h1>
+                <h1 class="text-center text-muted">Pacijenti u opservaciji</h1>
             </div>
         </div>
         <div class="p-3 text-muted border-top">
@@ -156,8 +153,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="CaseOhbp : ${allCases}" th:class="${CaseOhbp.patientObservation == 0} ? 'hide'">
-                            <td th:text="${CaseOhbp.triageCategory}"
-                                th:style="'background-color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'}) + '; color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'})">
+                            <td th:text="${CaseOhbp.triageCategory}" th:style="'background-color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'}) + '; color: ' + (${CaseOhbp.triageCategory == 1 ? '#FF0000' : CaseOhbp.triageCategory == 2 ? '#FFA500' : CaseOhbp.triageCategory == 3 ? '#FFFF00' : CaseOhbp.triageCategory == 4 ? '#008000' : '#0000FF'})">
                             </td>
                             <td class="h2" th:text="${CaseOhbp.caseID}"></td>
                             <td class="h2" th:text="${CaseOhbp.patientFirstName}"></td>
@@ -179,8 +175,7 @@
                 <div class="container-flex">
                     <div class="row d-flex justify-content-between">
                         <div class="col-lg-8 col-md-6">
-                            <p class="mb-0"> © OHBP Opća bolnica Zabok i bolnica hrvatskih veterana 2023 || Health IT
-                                Akademija 2023</p>
+                            <p class="mb-0"> © OHBP Opća bolnica Zabok i bolnica hrvatskih veterana 2023 || Health IT Akademija 2023</p>
                         </div>
                     </div>
                 </div>
@@ -189,4 +184,5 @@
     </div>
 </div>
 </body>
+
 </html>
