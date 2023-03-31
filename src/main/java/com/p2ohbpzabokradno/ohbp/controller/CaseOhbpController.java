@@ -92,6 +92,12 @@ public class CaseOhbpController {
     }
 
 
+    @GetMapping("/printID")
+    public String printID(Model model) {
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        return "printID.html";
+    }
+
     @GetMapping("/administrator_page")
     public String getAllCases(Model model) {
         model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
@@ -100,7 +106,7 @@ public class CaseOhbpController {
 
     @GetMapping("/patient_page")
     public String getAllCasesPatient(Model model) {
-        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        model.addAttribute("ID", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
         return "patients.html";
     }
 

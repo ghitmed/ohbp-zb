@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded">
+  <style>
+        .table {
+            border-collapse: separate;
+            border-spacing: 0 50px;
+            text-justfy: center;
+            text-align: center;
+
+        }
+
+
+
+        @keyframes blink {
+            0% {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: red;
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+    </style>
+
+  <script>
+        //timer za promjenu tranice
+        setTimeout(function () {
+            window.location.href = "/redirectToDashboardOhbp";
+        }, 1800000);
+
+    </script>
+
+
+  <script>
+        // skripta za blinkanje zivotno ugroženi pacijent
+        var isBlinking = false;
+        var elementToBlink = document.getElementById("element-to-blink");
+        var intervalId;
+        var blinkStatus = localStorage.getItem("blinkStatus");
+
+
+        function startBlink() {
+            var elementToBlink = document.getElementById("element-to-blink");
+            elementToBlink.classList.toggle("blink");
+        }
+
+
+        function checkBlinkStatus() {
+            if (blinkStatus === "true") {
+                startBlink();
+            }
+        }
+
+
+        // ne rad da se nastavi blinkanje nakon promjene strance, za sad treba na svakoj stranici upaliti gumb
+        window.onload = checkBlinkStatus;
+        window.onbeforeunload = function () {
+            if (isBlinking) {
+                localStorage.setItem("blinkStatus", "true");
+            } else {
+                localStorage.setItem("blinkStatus", "false");
+            }
+        };
+    </script>
+</head>
+
+<body onload="checkBlinkStatus()">
+<div class="container-max-width p-3">
+  <nav class="navbar navbar-expand-md navbar" style="">
+    <div class="container-flex">
+    </div>
+  </nav>
+  <div class="h-20 container-flex">
+    <div class="container-flex">
+      <div id="md-8" style="" class="row">
+        <div class="col-md-3 d-flex align-items-center justify-content-start" style="">
+
+        </div>
+        <div class="text-left d-flex justify-content-center col-md-5 align-items-center" style="">
+          <h1 class="display-5 text-primary w-100 d-flex justify-content-center text-left align-items-center flex-grow-1"
+              style="">
+
+        </div>
+      </div>
+      <hr class="solid">
+    </div>
+  </div>
+  <div class="" style="">
+    <div class="container-flex">
+      <div id="element-to-blink" class="toggleBlink">
+
+      </div>
+    </div>
+  </div>
+  <div class="p-3 text-muted border-top" ></div>
+  <div>
+    <div class="container-flex">
+
+      <table class="table table-responsive table-striped">
+        <thead>
+        <tr>
+          <th class="h3">ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="CaseOhbp, iterStat: ${allCases}" th:if="${iterStat.index} <1">
+
+
+          <td class="h2" th:text="${CaseOhbp.caseID}"></td>
+
+
+
+          </td>
+
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div class="p-3 text-muted border-top">
+      <div class="container-flex">
+        <div class="row d-flex justify-content-between">
+          <div class="col-lg-8 col-md-6">
+            <p class="mb-0"> © OHBP Opća bolnica Zabok i bolnica hrvatskih veterana 2023 || Health IT
+              Akademija
+              2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
