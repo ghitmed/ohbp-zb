@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -106,24 +107,17 @@ public class CaseOhbpController {
 
     @GetMapping("/patient_page")
     public String getAllCasesPatient(Model model) {
-        model.addAttribute("ID", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
+        model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
         return "patients.html";
     }
 
 
     @GetMapping("/createNewCase")
     public String createNewCase(@ModelAttribute("caseOhbp") CaseOhbp case123) {
-         caseOhbpRepository.save (case123);
+        caseOhbpRepository.save(case123);
         return "redirect:/redirectToBis";
 
     }
-
-
-
-
-
-
-
 
 
     @GetMapping("/template/admnistrator_page")
@@ -185,6 +179,5 @@ public class CaseOhbpController {
         model.addAttribute("allCases", caseOhbpRepository.findAll(Sort.by(Sort.Direction.ASC, "triageCategory")));
         return "dashboard_ohbp.html";
     }
+
 }
-
-
